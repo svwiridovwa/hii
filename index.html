@@ -54,46 +54,81 @@
     <span class="lol">
         <div class="row">
             <div class="col">
-                Mon
+                <span id="firstd">
+                    Mon
+                </span>
                 <br />
-                <img src="https://cdn-icons-png.flaticon.com/512/2932/2932445.png" />
+                <span id="firsti">
+                    <img src="https://cdn-icons-png.flaticon.com/512/2932/2932445.png" />
+                </span>
                 <br />
-                21°C
+                <span id="firstt">
+                    21°C
+                </span>
             </div>
             <div class="col">
-                Tue
+                <span id="secondd">
+                    Mon
+                </span>
                 <br />
-                <img src="https://cdn-icons-png.flaticon.com/512/2948/2948175.png" />
+                <span id="secondi">
+                    <img src="https://cdn-icons-png.flaticon.com/512/2948/2948175.png" />
+                </span>
                 <br />
-                17°C
+                <span id="secondt">
+                    21°C
+                </span>
             </div>
             <div class="col">
-                Wed
+                <span id="thirdd">
+                    Mon
+                </span>
                 <br />
-                <img src="https://cdn-icons-png.flaticon.com/512/2932/2932445.png"/>
+                <span id="thirdi">
+                    <img src="https://cdn-icons-png.flaticon.com/512/2932/2932445.png"/>
+                </span>
                 <br />
-                19°C
+                <span id="thirdt">
+                    21°C
+                </span>
             </div>
             <div class="col">
-                Thu
+                <span id="fourthd">
+                    Mon
+                </span>
                 <br />
-                <img src="https://cdn-icons-png.flaticon.com/512/8003/8003100.png"/>
+                <span id="fourthi">
+                    <img src="https://cdn-icons-png.flaticon.com/512/8003/8003100.png"/>
+                </span>
                 <br />
-                23°C
+                <span id="fourtht">
+                    21°C
+                </span>
             </div>
             <div class="col">
-                Fri
+                <span id="fifthd">
+                    Mon
+                </span>
                 <br />
-                <img src="https://cdn-icons-png.flaticon.com/512/2932/2932445.png"/>
+                <span id="fifthi">
+                    <img src="https://cdn-icons-png.flaticon.com/512/2932/2932445.png"/>
+                </span>
                 <br />
-                21°C
+                <span id="fiftht">
+                    21°C
+                </span>
             </div>
         </div>
     </span>
     </br>
-    <p>
-        <a href="https://github.com/svwiridovwa/hii/blob/main/index.html">Open-source code</a>
-        , by Valeriia Svyrydova
+    </br>
+    <p id="bottom">
+        This project was coded by Valeriia Svyrydova 
+        </br>
+        And is 
+        <a href="https://github.com/svwiridovwa/hii/blob/main/index.html">Open-source on GitHub</a>
+        and 
+        <a href="">hosted on Netlify</a>
     </p>
     </span>
 
@@ -115,6 +150,7 @@
         let a = document.querySelector("#day");
         let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
         a.innerHTML = days[time.getDay()];
+        timeNow.innerHTML = time.getHours() + ":" + time.getMinutes() + ",";
         if (time.getMinutes() < 10)
         {
             timeNow.innerHTML = time.getHours() + ":0" + time.getMinutes() + ",";
@@ -127,6 +163,32 @@
         {
             timeNow.innerHTML = "0" + time.getHours() + ":0" + time.getMinutes() + ",";
         }
+
+        let l = time.getDay();
+        let days2 = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+
+        let k1 = document.querySelector("#firstd");
+        l = l + 1;
+        k1.innerHTML = days2[l % 7];
+
+        let k2 = document.querySelector("#secondd");
+        l = l + 1;
+        k2.innerHTML = days2[l % 7];
+
+        let k3 = document.querySelector("#thirdd");
+        l = l + 1;
+        k3.innerHTML = days2[l % 7];
+
+        let k4 = document.querySelector("#fourthd");
+        l = l + 1;
+        k4.innerHTML = days2[l % 7];
+
+        let k5 = document.querySelector("#fifthd");
+        l = l + 1;
+        k5.innerHTML = days2[l % 7];
+
+
         let input = document.querySelector("#city");
         let inpu = document.querySelector("#city-form");
         function go(event){
@@ -137,6 +199,55 @@
 
             let apiKey = "aab8d73ae7b8351615bbab455adf8231";
             let url = `https://api.openweathermap.org/data/2.5/weather?q=${b}&appid=${apiKey}&units=metric`;
+            let apiUrl;
+
+
+            function displayForecast(response)
+            {
+                let pic1 = document.querySelector("#firsti");
+                pic1.innerHTML = " ";
+                pic1.appendChild(document.createElement('img')).src = `http://openweathermap.org/img/wn/${response.data.list[1].weather[0].icon}@2x.png`;
+
+                let pic2 = document.querySelector("#secondi");
+                pic2.innerHTML = " ";
+                pic2.appendChild(document.createElement('img')).src = `http://openweathermap.org/img/wn/${response.data.list[2].weather[0].icon}@2x.png`;
+
+                let pic3 = document.querySelector("#thirdi");
+                pic3.innerHTML = " ";
+                pic3.appendChild(document.createElement('img')).src = `http://openweathermap.org/img/wn/${response.data.list[3].weather[0].icon}@2x.png`;
+
+                let pic4 = document.querySelector("#fourthi");
+                pic4.innerHTML = " ";
+                pic4.appendChild(document.createElement('img')).src = `http://openweathermap.org/img/wn/${response.data.list[4].weather[0].icon}@2x.png`;
+
+                let pic5 = document.querySelector("#fifthi");
+                pic5.innerHTML = " ";
+                pic5.appendChild(document.createElement('img')).src = `http://openweathermap.org/img/wn/${response.data.list[5].weather[0].icon}@2x.png`;
+
+
+                
+                let tem1 = document.querySelector("#firstt");
+                tem1.innerHTML = `${Math.round(response.data.list[1].main.temp_max) - 273}°C  ${Math.round(response.data.list[1].main.temp_min) - 273}°C`;
+                let tem2 = document.querySelector("#secondt");
+                tem2.innerHTML = `${Math.round(response.data.list[2].main.temp_max) - 273}°C  ${Math.round(response.data.list[2].main.temp_min) - 273}°C`;
+                let tem3 = document.querySelector("#thirdt");
+                tem3.innerHTML = `${Math.round(response.data.list[3].main.temp_max) - 273}°C  ${Math.round(response.data.list[3].main.temp_min) - 273}°C`;
+                let tem4 = document.querySelector("#fourtht");
+                tem4.innerHTML = `${Math.round(response.data.list[4].main.temp_max) - 273}°C  ${Math.round(response.data.list[4].main.temp_min) - 273}°C`;
+                let tem5 = document.querySelector("#fiftht");
+                tem5.innerHTML = `${Math.round(response.data.list[5].main.temp_max) - 273}°C  ${Math.round(response.data.list[5].main.temp_min) - 273}°C`;
+                
+                console.log(response.data.list);
+            }
+
+
+            function forecast(coordinates)
+            {
+                apiUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${coordinates.data.coord.lat}&lon=${coordinates.data.coord.lon}&appid=${apiKey}`
+                axios.get(apiUrl).then(displayForecast);
+            }
+            axios.get(url).then(forecast);
+
 
             function displayWeather(response) {
                 let temp = document.querySelector("#val");
@@ -180,4 +291,3 @@
     </script>
   </body>
 </html>
-
